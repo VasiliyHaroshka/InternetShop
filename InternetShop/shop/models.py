@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Category(models.manager):
+class Category(models.Model):
     """Description of product's category"""
     name = models.CharField(
         "Название",
@@ -38,7 +38,7 @@ class Product(models.Model):
     image = models.ImageField(
         "Картинка",
         upload_to="products/%Y/%m/%d",
-        lank=True,
+        blank=True,
     )
     description = models.TextField(
         "Описание",
@@ -78,3 +78,5 @@ class Product(models.Model):
             models.Index(fields=("name",)),
             models.Index(fields=("-created_at",)),
         )
+        verbose_name = "Товар"
+        verbose_name_plural = "Товары"
