@@ -8,8 +8,8 @@ def list_of_products(request, category_slug=None):
     Return products with certain category.
     If there is no category, it will return all products.
     """
-    category = None
     categories = Category.objects.all()
+    category = None
     products = Product.objects.filter(is_available=True)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
@@ -21,7 +21,7 @@ def list_of_products(request, category_slug=None):
         "products": products,
     }
 
-    return render(request, "shop/product_list.html", context=context)
+    return render(request, "shop/product/product_list.html", context=context)
 
 
 def product_detail(request, id, slug):
@@ -31,4 +31,4 @@ def product_detail(request, id, slug):
         "product": product,
     }
 
-    return render(request, "shop/product_detail.html", context=context)
+    return render(request, "shop/product/product_detail.html", context=context)
