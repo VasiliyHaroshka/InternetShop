@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
 
 
-def list_of_products(request, category_slug=None):
+def product_list(request, category_slug=None):
     """
     Return products with certain category.
     If there is no category, it will return all products.
@@ -13,7 +13,7 @@ def list_of_products(request, category_slug=None):
     products = Product.objects.filter(is_available=True)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        prodocts = products.filter(category=category)
+        products = products.filter(category=category)
 
     context = {
         "categories": categories,
