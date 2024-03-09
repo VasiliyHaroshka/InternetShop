@@ -34,6 +34,7 @@ def remove_product_from_cart(request, product_id):
 
 
 def cart_detail(request):
+    """Show products in a cart"""
     cart = Cart(request)
     context = {
         "cart": cart,
