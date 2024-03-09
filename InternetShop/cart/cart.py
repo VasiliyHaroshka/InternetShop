@@ -20,7 +20,7 @@ class Cart:
         if product_id not in self.cart:
             self.cart[product_id] = {
                 "count": 0,
-                "price": str(product_id.price),
+                "price": str(product.price),
             }
         if override_count:
             self.cart[product_id]["count"] = count
