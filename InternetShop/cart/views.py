@@ -36,6 +36,13 @@ def remove_product_from_cart(request, product_id):
 def cart_detail(request):
     """Show products in a cart"""
     cart = Cart(request)
+    for product in cart:
+        product["update_count_form"] = AddProductToCartForm(
+            initial={
+                "count": product["count"],
+                "override": True,
+            }
+        )
     context = {
         "cart": cart,
     }
