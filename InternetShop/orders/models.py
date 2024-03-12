@@ -4,22 +4,45 @@ from shop.models import Product
 
 class Order(models.Model):
     """Description of order"""
-    first_name = models.CharField("Имя", max_length=100)
-    last_name = models.CharField("Фамилия", max_length=100)
+    first_name = models.CharField(
+        "Имя",
+        max_length=100,
+    )
+    last_name = models.CharField(
+        "Фамилия",
+        max_length=100,
+    )
     email = models.EmailField("Email")
-    address = models.CharField("Адрес", max_length=250)
-    post_index = models.CharField("Почтовый индекс",max_length=6)
-    city = models.CharField("Город", 50)
-    created_at = models.DateTimeField("Создан", auto_now_add=True)
-    updated_at = models.DateTimeField("Отредактирован", auto_now=True)
-    paid = models.BooleanField("Оплачен", default=False)
+    address = models.CharField(
+        "Адрес",
+        max_length=250,
+    )
+    post_index = models.CharField(
+        "Почтовый индекс",
+        max_length=6,
+    )
+    city = models.CharField(
+        "Город",
+        max_length=50,
+    )
+    created_at = models.DateTimeField(
+        "Создан",
+        auto_now_add=True,
+    )
+    updated_at = models.DateTimeField(
+        "Отредактирован",
+        auto_now=True,
+    )
+    paid = models.BooleanField(
+        "Оплачен",
+        default=False,)
 
     def __str__(self):
         return f"Order {self.id}, paid = {self.paid}"
 
     class Meta:
-        orderind = ["-created_at"]
-        indexes = [models.Index(fields="-created_at")]
+        ordering = ("-created_at",)
+        indexes = [models.Index(fields=("-created_at",))]
 
     def get_total_cost(self):
         """Total cost of all products in the order"""
@@ -31,19 +54,22 @@ class OrderItem(models.Model):
     order = models.ForeignKey(
         "Order",
         on_delete=models.CASCADE,
-        related_name="items"
+        related_name="items",
     )
     product = models.ForeignKey(
-        "Product",
+        Product,
         on_delete=models.CASCADE,
-        related_name="order_items"
+        related_name="order_items",
     )
     price = models.DecimalField(
         "Цена",
         max_digits=10,
-        ecimal_places=2
+        decimal_places=2,
     )
-    count = models.PositiveIntegerField("Количество", default=1)
+    count = models.PositiveIntegerField(
+        "Количество",
+        default=1,
+    )
 
     def __str__(self):
         return self.id
