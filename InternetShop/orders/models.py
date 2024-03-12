@@ -43,6 +43,8 @@ class Order(models.Model):
     class Meta:
         ordering = ("-created_at",)
         indexes = [models.Index(fields=("-created_at",))]
+        verbose_name = "Заказ"
+        verbose_name_plural = "Заказы"
 
     def get_total_cost(self):
         """Total cost of all products in the order"""
