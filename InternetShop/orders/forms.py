@@ -9,5 +9,5 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = (
             "first_name", "last_name", "email",
-            "address", "post_index", "city",
+            "city", "address", "post_index",
         )

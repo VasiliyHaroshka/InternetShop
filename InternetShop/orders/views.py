@@ -19,7 +19,7 @@ def order_create(request):
                     count=item["count"],
                 )
             context = {
-                "oreder": order,
+                "order": order,
             }
             cart.clear()
             return render(request, "orders/order/created.html", context)
@@ -29,4 +29,4 @@ def order_create(request):
         "cart": cart,
         "form": form,
     }
-    return render(request, "orders/order/create.html")
+    return render(request, "orders/order/create.html", context)
