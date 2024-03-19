@@ -1,5 +1,6 @@
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -10,3 +11,6 @@ DATA_BASE_NAME = os.environ.get("DATA_BASE_NAME")
 USER_NAME = os.environ.get("USER_NAME")
 USER_PASSWORD = os.environ.get("USER_PASSWORD")
 HOST = os.environ.get("HOST")
+
+MAIL_RU_POST = os.environ.get("MAIL_RU_POST")
+MAIL_RU_PASSWORD = os.environ.get("MAIL_RU_PASSWORD")

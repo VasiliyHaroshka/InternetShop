@@ -134,3 +134,11 @@ MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 CART_SESSION_ID = "cart"
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = MAIL_RU_POST
+EMAIL_HOST_PASSWORD = MAIL_RU_PASSWORD
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
