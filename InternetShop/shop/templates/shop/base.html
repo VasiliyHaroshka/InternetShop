@@ -16,7 +16,7 @@
                     {% if total_items > 0 %}
                         <a href="{% url 'cart:cart_detail' %}">&#128722;:</a>
                         {{ total_items }} product{{ total_items|pluralize }}.
-                        Total price: {{ cart.get_total_price }} рублей.
+                        Total price: {{ cart.get_total_price }} $.
                     {% else %}
                         Your cart is empty.
                     {% endif %}

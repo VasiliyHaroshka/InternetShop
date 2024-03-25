@@ -22,6 +22,7 @@ from .config import (
     MAIL_RU_POST,
     MAIL_RU_PASSWORD,
     STRIPE_SECRET_KEY,
+    STRIPE_API_VERSION,
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -154,4 +155,4 @@ EMAIL_USE_SSL = False
 
 STRIPE_PUBLIC_KEY = "pk_test_51OyEugD5aN92fFHet0ryTmmeaYWr9x7gzC8ttqiIdzmr9muho52rUo7XIZeoP6voTKG5YP62Cf7N3NBfBiUMOp6K00qLip2oqF"
 STRIPE_SECRET_KEY = STRIPE_SECRET_KEY
-STRIPE_API_VERSION = "2022-08-01"
+STRIPE_API_VERSION = STRIPE_API_VERSION

@@ -12,7 +12,7 @@
                 {{ product.category }}
             </a>
         </h2>
-        <p class="price">{{ product.price }} рублей</p>
+        <p class="price">{{ product.price }} $</p>
         <form action="{% url 'cart:cart_add' product.id %}" method="post">
             {{ cart_form }}
             {% csrf_token %}
