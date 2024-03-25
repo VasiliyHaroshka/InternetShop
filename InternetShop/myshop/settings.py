@@ -13,7 +13,16 @@ import os
 from pathlib import Path
 
 from .config import SECRET_KEY
-from .config import DATA_BASE, DATA_BASE_NAME, USER_NAME, USER_PASSWORD, HOST, MAIL_RU_POST, MAIL_RU_PASSWORD
+from .config import (
+    DATA_BASE,
+    DATA_BASE_NAME,
+    USER_NAME,
+    USER_PASSWORD,
+    HOST,
+    MAIL_RU_POST,
+    MAIL_RU_PASSWORD,
+    STRIPE_SECRET_KEY,
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -141,3 +150,7 @@ EMAIL_HOST_USER = MAIL_RU_POST
 EMAIL_HOST_PASSWORD = MAIL_RU_PASSWORD
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+STRIPE_PUBLIC_KEY = "pk_test_51OyEugD5aN92fFHet0ryTmmeaYWr9x7gzC8ttqiIdzmr9muho52rUo7XIZeoP6voTKG5YP62Cf7N3NBfBiUMOp6K00qLip2oqF"
+STRIPE_SECRET_KEY = STRIPE_SECRET_KEY
+STRIPE_API_VERSION = "2022-08-01"
