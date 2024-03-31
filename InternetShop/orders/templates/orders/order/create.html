@@ -8,7 +8,7 @@
         <h3>Your order</h3>
         <ul>
             {% for item in cart %}
-                <li>{{ item.count }}x {{ item.product.name }}
+                <li>{{ item.quantity }}x {{ item.product.name }}
                     <span>{{ item.total_price }}$</span>
                 </li>
             {% endfor %}

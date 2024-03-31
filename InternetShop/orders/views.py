@@ -18,11 +18,9 @@ def order_create(request):
                     order=order,
                     product=item["product"],
                     price=item["price"],
-                    count=item["count"],
+                    quantity=item["quantity"],
                 )
-            context = {
-                "order": order,
-            }
+
             cart.clear()
             order_created.delay(order.id)
             request.session["order_id"] = order.id
