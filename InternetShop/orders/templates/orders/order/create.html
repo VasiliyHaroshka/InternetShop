@@ -8,12 +8,12 @@
         <h3>Your order</h3>
         <ul>
             {% for item in cart %}
-                <li>{{ item.count }}x {{ item.product.name }}
-                    <span>{{ item.total_price }}рублей</span>
+                <li>{{ item.quantity }}x {{ item.product.name }}
+                    <span>{{ item.total_price }}$</span>
                 </li>
             {% endfor %}
         </ul>
-        <p>Total: {{ cart.get_total_price }}рублей</p>
+        <p>Total: {{ cart.get_total_price }}$</p>
     </div>
     <form method="post" class="order-form">
         {% csrf_token %}

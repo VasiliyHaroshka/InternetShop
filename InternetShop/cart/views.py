@@ -8,7 +8,7 @@ from shop.models import Product
 
 @require_POST
 def add_product_to_cart(request, product_id):
-    """Add product to cart or change its count if product is already in a cart"""
+    """Add product to cart or change its quantity if product is already in a cart"""
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     form = AddProductToCartForm(request.POST)
@@ -17,8 +17,8 @@ def add_product_to_cart(request, product_id):
         data = form.cleaned_data
         cart.add_product(
             product=product,
-            count=data["count"],
-            override_count=data["override"],
+            quantity=data["quantity"],
+            override_quantity=data["override"],
         )
 
     return redirect("cart:cart_detail")
@@ -37,9 +37,9 @@ def cart_detail(request):
     """Show products in a cart"""
     cart = Cart(request)
     for product in cart:
-        product["update_count_form"] = AddProductToCartForm(
+        product["update_quantity_form"] = AddProductToCartForm(
             initial={
-                "count": product["count"],
+                "quantity": product["quantity"],
                 "override": True,
             }
         )

@@ -48,7 +48,7 @@ class Order(models.Model):
 
     def get_total_cost(self):
         """Total cost of all products in the order"""
-        return sum(item.get_cost for item in self.items.all())
+        return sum(item.get_cost() for item in self.items.all())
 
 
 class OrderItem(models.Model):
@@ -68,7 +68,7 @@ class OrderItem(models.Model):
         max_digits=10,
         decimal_places=2,
     )
-    count = models.PositiveIntegerField(
+    quantity = models.PositiveIntegerField(
         "Количество",
         default=1,
     )
@@ -78,4 +78,4 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         """Return cost of certain product in the order"""
-        return self.price * self.count
+        return self.price * self.quantity

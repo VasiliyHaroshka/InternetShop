@@ -16,3 +16,4 @@ MAIL_RU_POST = os.environ.get("MAIL_RU_POST")
 MAIL_RU_PASSWORD = os.environ.get("MAIL_RU_PASSWORD")
 
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_API_VERSION = os.environ.get("STRIPE_API_VERSION")
