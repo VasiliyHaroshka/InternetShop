@@ -1,19 +1,16 @@
 from decimal import Decimal
 
 import stripe
+from django.conf import settings
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
-
-from myshop.settings import STRIPE_SECRET_KEY, STRIPE_API_VERSION
 from orders.models import Order
 
-stripe.api_key = STRIPE_SECRET_KEY
-stripe.api_version = STRIPE_API_VERSION
+stripe.api_key = settings.STRIPE_SECRET_KEY
+stripe.api_version = settings.STRIPE_API_VERSION
 
 
 def payment_process(request):
-    """Create session of payment, checkout session and redirect to stripe payment form"""
     order_id = request.session.get("order_id", None)
     order = get_object_or_404(Order, id=order_id)
 
@@ -23,11 +20,12 @@ def payment_process(request):
 
         session_data = {
             "mode": "payment",
-            "client_reference_id": order_id,
+            "client_reference_id": order.id,
             "success_url": success_url,
             "cancel_url": cancel_url,
-            "line_items": [],
+            "line_items": []
         }
+
         for item in order.items.all():
             session_data["line_items"].append({
                 "price_data": {
@@ -44,12 +42,12 @@ def payment_process(request):
         return redirect(session.url, code=303)
 
     else:
-        return render(request, "payment/process.html", locals())
+        return render(request, 'payment/process.html', locals())
 
 
 def payment_completed(request):
-    return render(request, "payment:completed.html")
+    return render(request, "payment/completed.html")
 
 
 def payment_canceled(request):
-    return render(request, "payment:canceled.html")
+    return render(request, "payment/canceled.html")
