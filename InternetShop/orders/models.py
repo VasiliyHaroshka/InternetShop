@@ -74,7 +74,7 @@ class OrderItem(models.Model):
     )
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
     def get_cost(self):
         """Return cost of certain product in the order"""

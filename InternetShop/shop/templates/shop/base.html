@@ -12,15 +12,15 @@
         </div>
         <div id="subheader">
             <div class="cart">
-                {% with total_items=cart|length %}
-                    {% if total_items > 0 %}
-                        <a href="{% url 'cart:cart_detail' %}">&#128722;:</a>
-                        {{ total_items }} product{{ total_items|pluralize }}.
-                        Total price: {{ cart.get_total_price }} рублей.
-                    {% else %}
-                        Your cart is empty.
-                    {% endif %}
-                {% endwith %}
+<!--                {% with total_items=cart|length %}-->
+<!--                    {% if total_items > 0 %}-->
+<!--                        <a href="{% url 'cart:cart_detail' %}">&#128722;:</a>-->
+<!--                        {{ total_items }} product{{ total_items|pluralize }}.-->
+<!--                        Total price: {{ cart.get_total_price }} рублей.-->
+<!--                    {% else %}-->
+<!--                        Your cart is empty.-->
+<!--                    {% endif %}-->
+<!--                {% endwith %}-->
             </div>
         </div>
         <div id="content">
