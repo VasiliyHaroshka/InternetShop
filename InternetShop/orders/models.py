@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.db import models
+
 from shop.models import Product
 
 
@@ -84,3 +86,13 @@ class OrderItem(models.Model):
     def get_cost(self):
         """Return cost of certain product in the order"""
         return self.price * self.quantity
+
+    def get_stripe_url(self):
+        """Получение ссылки на каждый id платежа в информационной панели stripe"""
+        if not self.stripe_id:
+            return ""
+        if "_test_" in settings.STRIPE_SECRET_KEY:
+            path = "/test/"
+        else:
+            path = "/"
+        return f"https://dashboard.stripe.com{path}payments/{self.stripe_id}"
