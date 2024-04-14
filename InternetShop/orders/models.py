@@ -35,7 +35,7 @@ class Order(models.Model):
     )
     paid = models.BooleanField(
         "Оплачен",
-        default=False,)
+        default=False, )
 
     def __str__(self):
         return f"Order {self.id}, paid = {self.paid}"
@@ -71,6 +71,11 @@ class OrderItem(models.Model):
     quantity = models.PositiveIntegerField(
         "Количество",
         default=1,
+    )
+    stripe_id = models.CharField(
+        "Идентификатор связанного платежа",
+        max_length=250,
+        blank=True,
     )
 
     def __str__(self):
