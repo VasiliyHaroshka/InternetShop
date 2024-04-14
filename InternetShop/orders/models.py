@@ -37,7 +37,13 @@ class Order(models.Model):
     )
     paid = models.BooleanField(
         "Оплачен",
-        default=False, )
+        default=False,
+    )
+    stripe_id = models.CharField(
+        "Идентификатор связанного платежа",
+        max_length=250,
+        blank=True,
+    )
 
     def __str__(self):
         return f"Order {self.id}, paid = {self.paid}"
@@ -51,6 +57,16 @@ class Order(models.Model):
     def get_total_cost(self):
         """Total cost of all products in the order"""
         return sum(item.get_cost() for item in self.items.all())
+
+    def get_stripe_url(self):
+        """Получение ссылки на каждый id платежа в информационной панели stripe"""
+        if not self.stripe_id:
+            return ""
+        if "_test_" in settings.STRIPE_SECRET_KEY:
+            path = "/test/"
+        else:
+            path = "/"
+        return f"https://dashboard.stripe.com{path}payments/{self.stripe_id}"
 
 
 class OrderItem(models.Model):
@@ -74,11 +90,6 @@ class OrderItem(models.Model):
         "Количество",
         default=1,
     )
-    stripe_id = models.CharField(
-        "Идентификатор связанного платежа",
-        max_length=250,
-        blank=True,
-    )
 
     def __str__(self):
         return str(self.id)
@@ -86,13 +97,3 @@ class OrderItem(models.Model):
     def get_cost(self):
         """Return cost of certain product in the order"""
         return self.price * self.quantity
-
-    def get_stripe_url(self):
-        """Получение ссылки на каждый id платежа в информационной панели stripe"""
-        if not self.stripe_id:
-            return ""
-        if "_test_" in settings.STRIPE_SECRET_KEY:
-            path = "/test/"
-        else:
-            path = "/"
-        return f"https://dashboard.stripe.com{path}payments/{self.stripe_id}"
