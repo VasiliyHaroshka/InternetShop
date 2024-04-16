@@ -57,3 +57,4 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ('first_name', 'last_name', "address")
     list_editable = ("first_name", "last_name", "email", "address", "post_index", "city")
     inlines = (OrderItemInline,)
+    actions = (export_to_csv,)
