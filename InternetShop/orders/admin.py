@@ -8,15 +8,24 @@ from django.utils.safestring import mark_safe
 from .models import OrderItem, Order
 
 
-def export_to_csv(request, modeladmin, queryset):
+def export_to_csv(modeladmin, request, queryset):
     """Create action 'export to csv' for admin panel"""
-    opts = modeladmin.model._meta # текущий ModelAdmin
+    opts = modeladmin.model._meta
     content_disposition = f"attachment; filename={opts.verbose_name}.csv"
     response = HttpResponse(content_type="text/csv")
     response["Content-Disposition"] = content_disposition
+
     writer = csv.writer(response)
-    fields = [field for field in opts.get_fields() if not field.many_to_many and not field.one_to_many]
+    fields = [
+        field
+        for field in opts.get_fields()
+        if
+        not field.many_to_many
+        and
+        not field.one_to_many
+    ]
     writer.writerow([field.verbose_name for field in fields])  # заголовки
+
     for obj in queryset:
         data_row = []
         for field in fields:
