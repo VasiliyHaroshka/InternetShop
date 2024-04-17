@@ -3,6 +3,7 @@ import datetime
 
 from django.contrib import admin
 from django.http import HttpResponse
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 
 from .models import OrderItem, Order
@@ -56,11 +57,17 @@ def order_stripe_payment(obj: Order):
 order_stripe_payment.short_description = 'Stripe payment'
 
 
+def order_detail(obj: Order):
+    url = reverse("orders:admin_order_detail", args=[obj.id])
+    return mark_safe(f"<a href='{url}'>View</a>")
+
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
         "id", "first_name", "last_name", "email", "address",
-        "post_index", "city", "paid", "created_at", "updated_at"
+        "post_index", "city", "paid", "created_at", "updated_at",
+        order_detail,
     )
     list_filter = ("paid", "created_at", "updated_at")
     search_fields = ('first_name', 'last_name', "address")
