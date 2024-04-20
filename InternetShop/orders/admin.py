@@ -9,6 +9,15 @@ from django.utils.safestring import mark_safe
 from .models import OrderItem, Order
 
 
+def order_pdf(obj):
+    """Add link to pdf-report for every order"""
+    url = reverse("orders:admin_order_pdf", args=[obj.id])
+    return mark_safe(f"<a href='{url}'>PDF</a>")
+
+
+order_pdf.short_description = "Invoice"
+
+
 def export_to_csv(modeladmin, request, queryset):
     """Create action 'export to csv' for admin panel"""
     opts = modeladmin.model._meta
@@ -67,7 +76,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = (
         "id", "first_name", "last_name", "email", "address",
         "post_index", "city", "paid", "created_at", "updated_at",
-        order_detail,
+        order_detail, order_pdf,
     )
     list_filter = ("paid", "created_at", "updated_at")
     search_fields = ('first_name', 'last_name', "address")
