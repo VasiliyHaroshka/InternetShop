@@ -20,6 +20,5 @@ class Coupon(models.Model):
     ),
     is_active = models.BooleanField("Активен")
 
-
-def __str__(self):
-    return self.code
+    def __str__(self):
+        return self.code
