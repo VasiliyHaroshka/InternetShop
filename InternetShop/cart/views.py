@@ -3,6 +3,7 @@ from django.views.decorators.http import require_POST
 
 from .cart import Cart
 from .forms import AddProductToCartForm
+from coupons.forms import CouponApplyForm
 from shop.models import Product
 
 
@@ -36,14 +37,16 @@ def remove_product_from_cart(request, product_id):
 def cart_detail(request):
     """Show products in a cart"""
     cart = Cart(request)
-    for product in cart:
-        product["update_quantity_form"] = AddProductToCartForm(
+    for item in cart:
+        item["update_quantity_form"] = AddProductToCartForm(
             initial={
-                "quantity": product["quantity"],
+                "quantity": item["quantity"],
                 "override": True,
             }
         )
+    coupon_apply_form = CouponApplyForm()
     context = {
         "cart": cart,
+        "coupon_apply_form": coupon_apply_form,
     }
     return render(request, "cart/detail.html", context=context)
