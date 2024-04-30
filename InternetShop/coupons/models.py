@@ -17,7 +17,7 @@ class Coupon(models.Model):
             MinValueValidator(0),
             MaxValueValidator(100),
         ],
-    ),
+    )
     is_active = models.BooleanField("Активен")
 
     def __str__(self):

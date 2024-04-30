@@ -74,11 +74,12 @@ class Cart:
                 return Coupon.objects.get(id=self.coupon_id)
             except Coupon.DoesNotExist:
                 pass
+        return None
 
     def get_discount(self):
         """Return sum of coupon discount"""
         if self.coupon:
-            return self.coupon.discount / Decimal(100) * self.get_total_price()
+            return (self.coupon.discount / Decimal(100)) * self.get_total_price()
         return Decimal(0)
 
     def get_total_price_with_discount(self):
