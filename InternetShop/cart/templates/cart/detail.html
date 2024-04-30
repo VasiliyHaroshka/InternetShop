@@ -45,13 +45,36 @@
                 </tr>
                 {% endwith %}
             {% endfor %}
+
+            {% if cart.coupon %}
+                <tr class="subtotal">
+                    <td>Subtotal</td>
+                    <td colspan="4"></td>
+                    <td class="num">{{ cart.get_total_price|floatformat:2 }} $</td>
+                </tr>
+                <tr>
+                    <td>
+                        "{{ cart.coupon.code }}" coupon
+                        ({{ cart.coupon.discount }}% off)
+                    </td>
+                    <td colspan="4"></td>
+                    <td class="num neg">
+                        – ${{ cart.get_discount|floatformat:2 }}
+                    </td>
+                </tr>
+            {% endif %}
+
             <tr class="total">
                 <td>Total</td>
-                    <td colspan="4"></td>
-                    <td class="num">{{ cart.get_total_price }} рублей</td>
-                </tr>
+                <td colspan="4"></td>
+                <td class="num">
+                    {{ cart.get_total_price_with_discount|floatformat:2 }} $
+                </td>
+            </tr>
+
         </tbody>
     </table>
+
     <p class="text-right">
         <a href="{% url 'shop:product_list' %}" class="button
         light">Continue shopping</a>
