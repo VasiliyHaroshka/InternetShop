@@ -17,8 +17,9 @@ class Coupon(models.Model):
             MinValueValidator(0),
             MaxValueValidator(100),
         ],
+        help_text="Percentage value (0 to 100)"
     )
-    is_active = models.BooleanField("Активен")
+    is_active = models.BooleanField("Активен", default=False)
 
     def __str__(self):
         return self.code
