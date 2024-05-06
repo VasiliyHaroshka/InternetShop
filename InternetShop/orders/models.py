@@ -74,20 +74,6 @@ class Order(models.Model):
         verbose_name = "Заказ"
         verbose_name_plural = "Заказы"
 
-    def get_total_cost(self):
-        """Total cost of all products in the order"""
-        return sum(item.get_cost() for item in self.items.all())
-
-    def get_stripe_url(self):
-        """Получение ссылки на каждый id платежа в информационной панели stripe"""
-        if not self.stripe_id:
-            return ""
-        if "_test_" in settings.STRIPE_SECRET_KEY:
-            path = "/test/"
-        else:
-            path = "/"
-        return f"https://dashboard.stripe.com{path}payments/{self.stripe_id}"
-
     def get_total_cost_before_discount(self):
         """Итоговая стоимость заказа без скидки"""
         return sum(item.get_cost() for item in self.items.all())
@@ -98,6 +84,21 @@ class Order(models.Model):
         if self.discount:
             return total_cost * (self.discount / Decimal(100))
         return Decimal(0)
+
+    def get_total_cost(self):
+        """Total cost of all products in the order with discount (if it is)"""
+        total_cost = self.get_total_cost_before_discount()
+        return total_cost - self.get_discount()
+
+    def get_stripe_url(self):
+        """Получение ссылки на каждый id платежа в информационной панели stripe"""
+        if not self.stripe_id:
+            return ""
+        if "_test_" in settings.STRIPE_SECRET_KEY:
+            path = "/test/"
+        else:
+            path = "/"
+        return f"https://dashboard.stripe.com{path}payments/{self.stripe_id}"
 
 
 class OrderItem(models.Model):
