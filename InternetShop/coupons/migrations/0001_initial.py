@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('valid_to', models.DateTimeField()),
                 ('discount', models.IntegerField(help_text='Percentage value (0 to 100)',
                                                  validators=[MinValueValidator(0), MaxValueValidator(100)])),
-                ('active', models.BooleanField()),
+                ('is_active', models.BooleanField()),
             ],
         ),
     ]
