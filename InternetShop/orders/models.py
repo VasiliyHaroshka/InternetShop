@@ -1,6 +1,8 @@
 from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
+from coupons.models import Coupon
 from shop.models import Product
 
 
@@ -43,6 +45,22 @@ class Order(models.Model):
         "Идентификатор связанного платежа",
         max_length=250,
         blank=True,
+    )
+    coupon = models.ForeignKey(
+        Coupon,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="orders",
+        verbose_name="Купон",
+    )
+    discount = models.IntegerField(
+        "Процент скидки",
+        default=0,
+        validators=[
+            MinValueValidator(0),
+            MaxValueValidator(100),
+        ],
     )
 
     def __str__(self):
