@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <title>{% block title %}My shop{% endblock %}</title>
-        <link href="{% static "css/base.css" %}" rel="stylesheet">
+        <link href="{% static 'css/base.css' %}" rel="stylesheet">
     </head>
     <body>
         <div id="header">
@@ -15,7 +15,7 @@
                     {% if cart|length > 0 %}
                         <a href="{% url 'cart:cart_detail' %}">&#128722;:</a>
                         {{ cart|length }} product{{ cart|length|pluralize }}.
-                        Total price: {{ cart.get_total_price }} рублей.
+                        Total price: {{ cart.get_total_price }} $.
                     {% else %}
                         Your cart is empty.
                     {% endif %}
