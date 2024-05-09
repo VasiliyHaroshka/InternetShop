@@ -66,3 +66,8 @@ class Recommender:
         suggestion_products.sort(key=lambda x: suggestion_products_ids.index(x.id))
 
         return suggestion_products
+
+    def clear_recommendations(self):
+        """Clear recommendations from Redis"""
+        for id in Product.objects.values_list("id", flat=True):
+            r.delete(self.get_product_key(id))
