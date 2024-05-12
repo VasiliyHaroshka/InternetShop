@@ -50,7 +50,7 @@ class Recommender:
             keys = [self.get_product_key(id) for id in product_ids]
             r.zunionstore(tmp_key, keys)
 
-            r.zrem(tmp_key, *product_ids)  # del
+            r.zrem(tmp_key, *product_ids)  # del the same
 
             suggestions = r.zrange(
                 tmp_key,
