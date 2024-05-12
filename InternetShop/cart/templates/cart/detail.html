@@ -75,6 +75,21 @@
         </tbody>
     </table>
 
+    {% if recommend_products %}
+        <div class="recommendations cart">
+        <h3>People who bought this product also usually bought these:</h3>
+            {% for r_p in recommended_products %}
+                <div class="item">
+                    <a href="{{ r_p.get_absolute_url }}">
+                    <img src="{% if r_p.image %}{{ r_p.image.url }}{% else %}
+                    {% static 'image/no_image.png' %}{% endif %}">
+                    </a>
+                    <p><a href="{{ r_p.get_absolute_url }}">{{ r_p.name }}</a></p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <p>Apply a coupon:</p>
     <form action="{% url 'coupons:apply' %}" method="post">
         {% csrf_token %}
