@@ -31,7 +31,7 @@ class Recommender:
                         with_product_id,
                     )
 
-    def suggest_products(self, products: list[Product], max_count=6):
+    def suggest_products(self, products: list[Product], max_count=5):
         """Get products are bought together for recommendations"""
         product_ids = [product.id for product in products]
 
@@ -63,7 +63,6 @@ class Recommender:
 
         suggestion_products_ids = [int(id) for id in suggestions]
         suggestion_products = list[Product.objects.filter(id__in=suggestion_products_ids)]
-        suggestion_products.sort(key=lambda x: suggestion_products_ids.index(x.id))
 
         return suggestion_products
 

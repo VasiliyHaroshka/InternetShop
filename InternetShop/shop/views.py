@@ -27,7 +27,7 @@ def product_list(request, category_slug=None):
 
 
 def product_detail(request, id, slug):
-    """Return certain product via id snd slug"""
+    """Return certain product via id snd slug (with rocommend products)"""
     product = get_object_or_404(Product, is_available=True, id=id, slug=slug)
     cart_form = AddProductToCartForm()
 
