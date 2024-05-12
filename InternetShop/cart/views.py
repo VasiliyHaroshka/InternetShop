@@ -5,6 +5,7 @@ from .cart import Cart
 from .forms import AddProductToCartForm
 from coupons.forms import CouponApplyForm
 from shop.models import Product
+from shop.recommender import Recommender
 
 
 @require_POST
@@ -35,7 +36,7 @@ def remove_product_from_cart(request, product_id):
 
 
 def cart_detail(request):
-    """Show products in a cart"""
+    """Show products in a cart (with recommend products)"""
     cart = Cart(request)
     for item in cart:
         item["update_quantity_form"] = AddProductToCartForm(
@@ -45,8 +46,17 @@ def cart_detail(request):
             }
         )
     coupon_apply_form = CouponApplyForm()
+
+    recommender = Recommender()
+    cart_products = [item["product"] for item in cart]
+    if cart_products:
+        recommend_products = recommender.suggest_products(cart_products, 6)
+    else:
+        recommend_products = []
+
     context = {
         "cart": cart,
         "coupon_apply_form": coupon_apply_form,
+        "recommend_products": recommend_products,
     }
     return render(request, "cart/detail.html", context=context)
