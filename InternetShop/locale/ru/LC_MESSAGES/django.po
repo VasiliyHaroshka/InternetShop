@@ -21,8 +21,8 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 #: myshop/settings.py:131
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: myshop/settings.py:132
 msgid "Русский"
-msgstr ""
+msgstr "Russian"
