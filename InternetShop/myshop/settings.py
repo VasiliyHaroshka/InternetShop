@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 from .config import SECRET_KEY
 from .config import (
@@ -127,8 +128,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en"
 
 LANGUAGES = [
-    ("en", "English"),
-    ("ru", "Русский"),
+    ("en", _("English")),
+    ("ru", _("Русский")),
 ]
 
 TIME_ZONE = "UTC"
