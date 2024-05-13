@@ -3,6 +3,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from coupons.models import Coupon
 from shop.models import Product
@@ -11,24 +12,24 @@ from shop.models import Product
 class Order(models.Model):
     """Description of order"""
     first_name = models.CharField(
-        "Имя",
+        _("first_name"),
         max_length=100,
     )
     last_name = models.CharField(
-        "Фамилия",
+        _("last_name"),
         max_length=100,
     )
-    email = models.EmailField("Email")
+    email = models.EmailField(_("email"))
     address = models.CharField(
-        "Адрес",
+        _("address"),
         max_length=250,
     )
     post_index = models.CharField(
-        "Почтовый индекс",
+        _("post index"),
         max_length=6,
     )
     city = models.CharField(
-        "Город",
+        _("city"),
         max_length=50,
     )
     created_at = models.DateTimeField(
