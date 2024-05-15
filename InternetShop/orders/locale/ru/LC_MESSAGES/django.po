@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 10:05+0300\n"
+"POT-Creation-Date: 2024-05-15 15:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,26 +19,97 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: models.py:15
+
+#: orders/models.py:15
 msgid "first_name"
 msgstr "Имя"
 
-#: models.py:19
+#: orders/models.py:19
 msgid "last_name"
 msgstr "Фамилия"
 
-#: models.py:22
+#: orders/models.py:22
 msgid "email"
 msgstr "Электронная почта"
 
-#: models.py:24
+#: orders/models.py:24
 msgid "address"
 msgstr "Адрес"
 
-#: models.py:28
+#: orders/models.py:28
 msgid "post index"
 msgstr "Почтовый индекс"
 
-#: models.py:32
+#: orders/models.py:32
 msgid "city"
 msgstr "Город"
+
+#: orders/templates/orders/order/create.html:4
+#: orders/templates/orders/order/create.html:7
+msgid "Checkout"
+msgstr ""
+
+#: orders/templates/orders/order/create.html:9
+msgid "Your order"
+msgstr ""
+
+#: orders/templates/orders/order/create.html:18
+#, python-format
+msgid ""
+"\n"
+"                        \"%(code)s\" (%(discount)s %% off)\n"
+"                    "
+msgstr ""
+
+#: orders/templates/orders/order/create.html:25
+#: orders/templates/orders/order/pdf.html:61
+msgid "Total"
+msgstr ""
+
+#: orders/templates/orders/order/create.html:30
+msgid "Place order"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:4
+msgid "My shop"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:6
+msgid "Invoice no"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:12
+msgid "Bill to"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:20
+msgid "Items bought"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:25
+msgid "Product"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:26
+msgid "Price"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:27
+msgid "Quantity"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:28
+msgid "Cost"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:43
+msgid "Subtotal"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:50
+#, python-format
+msgid ""
+"\n"
+"                          \"%(code)s\" (%(discount)s%% off)\n"
+"                        "
+msgstr ""

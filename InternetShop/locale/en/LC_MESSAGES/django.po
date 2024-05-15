@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 09:51+0300\n"
+"POT-Creation-Date: 2024-05-15 15:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,122 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cart/forms.py:12 cart/templates/cart/detail.html:14
+msgid "Quantity"
+msgstr ""
+
+#: cart/templates/cart/detail.html:5 cart/templates/cart/detail.html:8
+msgid "Your shopping cart"
+msgstr ""
+
+#: cart/templates/cart/detail.html:12
+msgid "Image"
+msgstr ""
+
+#: cart/templates/cart/detail.html:13
+msgid "Product"
+msgstr ""
+
+#: cart/templates/cart/detail.html:15 cart/templates/cart/detail.html:40
+msgid "Remove"
+msgstr ""
+
+#: cart/templates/cart/detail.html:16
+msgid "Unit price"
+msgstr ""
+
+#: cart/templates/cart/detail.html:17
+msgid "Price"
+msgstr ""
+
+#: cart/templates/cart/detail.html:34
+msgid "Update"
+msgstr ""
+
+#: cart/templates/cart/detail.html:52
+msgid "Subtotal"
+msgstr ""
+
+#: cart/templates/cart/detail.html:58
+#, python-format
+msgid ""
+"\n"
+"                            \"%(code)s\" coupon (%(discount)s%% off)\n"
+"                        "
+msgstr ""
+
+#: cart/templates/cart/detail.html:70
+msgid "Total"
+msgstr ""
+
+#: cart/templates/cart/detail.html:82
+#: shop/templates/shop/product/product_detail.html:26
+msgid "People who bought this product also usually bought these"
+msgstr ""
+
+#: cart/templates/cart/detail.html:95
+msgid "Apply a coupon"
+msgstr ""
+
+#: cart/templates/cart/detail.html:99
+msgid "Apply"
+msgstr ""
+
+#: cart/templates/cart/detail.html:103
+msgid "Continue shopping"
+msgstr ""
+
+#: cart/templates/cart/detail.html:104
+msgid "Checkout"
+msgstr ""
+
+#: coupons/forms.py:9
+msgid "Code"
+msgstr ""
+
 #: myshop/settings.py:131
 msgid "English"
 msgstr ""
 
 #: myshop/settings.py:132
 msgid "Русский"
+msgstr ""
+
+#: shop/templates/shop/base.html:7 shop/templates/shop/base.html:12
+msgid "My shop"
+msgstr ""
+
+#: shop/templates/shop/base.html:18
+#, python-format
+msgid ""
+"\n"
+"                            %(items)s product. Total price: %(total)s $.\n"
+"                        "
+msgid_plural ""
+"\n"
+"                            %(items)s products. Total price: %(total)s $.\n"
+"                        "
+msgstr[0] ""
+msgstr[1] ""
+
+#: shop/templates/shop/base.html:24
+msgid "Your cart is empty"
+msgstr ""
+
+#: shop/templates/shop/product/product_detail.html:20
+msgid "Add to cart"
+msgstr ""
+
+#: shop/templates/shop/product/product_list.html:9
+#: shop/templates/shop/product/product_list.html:28
+msgid "Products"
+msgstr ""
+
+#: shop/templates/shop/product/product_list.html:15
+msgid "Categories"
+msgstr ""
+
+#: shop/templates/shop/product/product_list.html:18
+msgid "All"
 msgstr ""

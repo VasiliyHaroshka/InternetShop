@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 09:51+0300\n"
+"POT-Creation-Date: 2024-05-15 15:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,80 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: cart/forms.py:12 cart/templates/cart/detail.html:14
+msgid "Quantity"
+msgstr "Количество"
+
+#: cart/templates/cart/detail.html:5 cart/templates/cart/detail.html:8
+msgid "Your shopping cart"
+msgstr "Ваша корзина"
+
+#: cart/templates/cart/detail.html:12
+msgid "Image"
+msgstr "Изображение"
+
+#: cart/templates/cart/detail.html:13
+msgid "Product"
+msgstr "Товар"
+
+#: cart/templates/cart/detail.html:15 cart/templates/cart/detail.html:40
+msgid "Remove"
+msgstr "Удалить"
+
+#: cart/templates/cart/detail.html:16
+msgid "Unit price"
+msgstr "Общая стоимость"
+
+#: cart/templates/cart/detail.html:17
+msgid "Price"
+msgstr "Стоимость"
+
+#: cart/templates/cart/detail.html:34
+msgid "Update"
+msgstr "Обновить"
+
+#: cart/templates/cart/detail.html:52
+msgid "Subtotal"
+msgstr "Стоимость"
+
+#: cart/templates/cart/detail.html:58
+#, python-format
+msgid ""
+"\n"
+"                            \"%(code)s\" coupon (%(discount)s%% off)\n"
+"                        "
+msgstr ""
+
+#: cart/templates/cart/detail.html:70
+msgid "Total"
+msgstr "Итого"
+
+#: cart/templates/cart/detail.html:82
+#: shop/templates/shop/product/product_detail.html:26
+msgid "People who bought this product also usually bought these"
+msgstr "Люди, которые покупают этот товар так же покупают эти товары"
+
+#: cart/templates/cart/detail.html:95
+msgid "Apply a coupon"
+msgstr "Применить купон"
+
+#: cart/templates/cart/detail.html:99
+msgid "Apply"
+msgstr "Применить"
+
+#: cart/templates/cart/detail.html:103
+msgid "Continue shopping"
+msgstr "Продалжить покупки"
+
+#: cart/templates/cart/detail.html:104
+msgid "Checkout"
+msgstr "Оформление заказа"
+
+#: coupons/forms.py:9
+msgid "Code"
+msgstr "Купон"
+
 #: myshop/settings.py:131
 msgid "English"
 msgstr "Английский"
@@ -26,3 +100,43 @@ msgstr "Английский"
 #: myshop/settings.py:132
 msgid "Русский"
 msgstr "Russian"
+
+#: shop/templates/shop/base.html:7 shop/templates/shop/base.html:12
+msgid "My shop"
+msgstr "Мой магазин"
+
+#: shop/templates/shop/base.html:18
+#, python-format
+msgid ""
+"\n"
+"                            %(items)s product. Total price: %(total)s $.\n"
+"                        "
+msgid_plural ""
+"\n"
+"                            %(items)s products. Total price: %(total)s $.\n"
+"                        "
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: shop/templates/shop/base.html:24
+msgid "Your cart is empty"
+msgstr "Ваша корзин пуста"
+
+#: shop/templates/shop/product/product_detail.html:20
+msgid "Add to cart"
+msgstr "Добавить в корзину"
+
+#: shop/templates/shop/product/product_list.html:9
+#: shop/templates/shop/product/product_list.html:28
+msgid "Products"
+msgstr "Товары"
+
+#: shop/templates/shop/product/product_list.html:15
+msgid "Categories"
+msgstr "Категории"
+
+#: shop/templates/shop/product/product_list.html:18
+msgid "All"
+msgstr "Все категории"
