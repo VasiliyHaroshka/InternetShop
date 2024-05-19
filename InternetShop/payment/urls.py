@@ -10,5 +10,4 @@ urlpatterns = [
     path(_("process/"), payment_process, name="process"),
     path(_("completed/"), payment_completed, name="completed"),
     path(_("canceled/"), payment_canceled, name="canceled"),
-    path("webhook/", stripe_webhook, name="stripe-webhook"),
 ]

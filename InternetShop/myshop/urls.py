@@ -21,6 +21,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.utils.translation import gettext_lazy as _
 
+from payment.webhooks import stripe_webhook
+
 urlpatterns = i18n_patterns(
     path("admin/", admin.site.urls),
     path(_("cart/"), include("cart.urls", namespace="cart")),
@@ -30,6 +32,10 @@ urlpatterns = i18n_patterns(
     path("rosetta/", include("rosetta.urls")),
     path("", include("shop.urls", namespace="shop")),
 )
+
+urlpatterns += [
+    path("payment/webhook", stripe_webhook, name="stripe-webhook"),
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
