@@ -7,16 +7,8 @@ from parler.models import TranslatableModel, TranslatedFields
 class Category(TranslatableModel):
     """Description of product's category"""
     translations = TranslatedFields(
-        name=models.CharField(
-            "Название",
-            max_length=100,
-            unique=True,
-        ),
-        slug=models.SlugField(
-            "Слаг",
-            max_length=100,
-            unique=True,
-        ),
+        name=models.CharField(max_length=100),
+        slug=models.SlugField(max_length=100, unique=True),
     )
 
     def __str__(self):
@@ -33,20 +25,9 @@ class Category(TranslatableModel):
 class Product(TranslatableModel):
     """Description products in the internetshop"""
     translations = TranslatedFields(
-        name=models.CharField(
-            "Название",
-            max_length=100,
-            unique=True,
-        ),
-        slug=models.SlugField(
-            "Слаг",
-            max_length=100,
-            unique=True,
-        ),
-        description=models.TextField(
-            "Описание",
-            blank=True,
-        ),
+        name=models.CharField(max_length=100),
+        slug=models.SlugField(max_length=100, unique=True),
+        description=models.TextField(blank=True),
     )
 
     image = models.ImageField(
@@ -73,7 +54,7 @@ class Product(TranslatableModel):
         auto_now=True,
     )
     category = models.ForeignKey(
-        "Category",
+        Category,
         on_delete=models.CASCADE,
         verbose_name="Категория",
         related_name="category",
