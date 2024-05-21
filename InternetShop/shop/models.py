@@ -23,10 +23,6 @@ class Category(TranslatableModel):
         return self.name
 
     class Meta:
-        ordering = ("name",)
-        indexes = (
-            models.Index(fields=("name",)),
-        )
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
 
@@ -87,12 +83,6 @@ class Product(TranslatableModel):
         return f"Товар: {self.name}"
 
     class Meta:
-        ordering = ("name",)
-        indexes = (
-            models.Index(fields=("id", "slug")),
-            models.Index(fields=("name",)),
-            models.Index(fields=("-created_at",)),
-        )
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
 
