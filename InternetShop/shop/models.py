@@ -1,18 +1,22 @@
 from django.db import models
 from django.urls import reverse
 
+from parler.models import TranslatableModel, TranslatedFields
 
-class Category(models.Model):
+
+class Category(TranslatableModel):
     """Description of product's category"""
-    name = models.CharField(
-        "Название",
-        max_length=100,
-        unique=True,
-    )
-    slug = models.SlugField(
-        "Слаг",
-        max_length=100,
-        unique=True,
+    translations = TranslatedFields(
+        name=models.CharField(
+            "Название",
+            max_length=100,
+            unique=True,
+        ),
+        slug=models.SlugField(
+            "Слаг",
+            max_length=100,
+            unique=True,
+        ),
     )
 
     def __str__(self):
@@ -30,27 +34,31 @@ class Category(models.Model):
         return reverse("shop:product_list_by_category", args=[self.slug])
 
 
-class Product(models.Model):
+class Product(TranslatableModel):
     """Description products in the internetshop"""
-    name = models.CharField(
-        "Название",
-        max_length=100,
-        unique=True,
+    translations = TranslatedFields(
+        name=models.CharField(
+            "Название",
+            max_length=100,
+            unique=True,
+        ),
+        slug=models.SlugField(
+            "Слаг",
+            max_length=100,
+            unique=True,
+        ),
+        description=models.TextField(
+            "Описание",
+            blank=True,
+        ),
     )
-    slug = models.SlugField(
-        "Слаг",
-        max_length=100,
-        unique=True,
-    )
+
     image = models.ImageField(
         "Картинка",
         upload_to="products/%Y/%m/%d",
         blank=True,
     )
-    description = models.TextField(
-        "Описание",
-        blank=True,
-    )
+
     price = models.DecimalField(
         "Цена",
         max_digits=10,
