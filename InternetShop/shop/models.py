@@ -83,6 +83,9 @@ class Product(TranslatableModel):
         return f"Товар: {self.name}"
 
     class Meta:
+        indexes = (
+            models.Index(fields=("-created_at",)),
+        )
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
 
