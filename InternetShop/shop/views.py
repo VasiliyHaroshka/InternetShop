@@ -32,8 +32,15 @@ def product_list(request, category_slug=None):
 
 
 def product_detail(request, id, slug):
-    """Return certain product via id snd slug (with rocommend products)"""
-    product = get_object_or_404(Product, is_available=True, id=id, slug=slug)
+    """Return certain product via id snd slug (with recommend products)"""
+    language = request.LANGUAGE_CODE
+    product = get_object_or_404(
+        Product,
+        is_available=True,
+        id=id,
+        translations__language=language,
+        translations__slug=slug,
+    )
     cart_form = AddProductToCartForm()
 
     recommender = Recommender()
