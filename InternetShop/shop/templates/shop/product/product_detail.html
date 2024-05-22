@@ -23,7 +23,7 @@
 
         {% if recommend_products %}
             <div class="recommendations">
-                <h3>{% trans "People who bought this product also usually bought these": %}</h3>
+                <h3>{% trans "People who bought this product also usually bought these:" %}</h3>
                 {% for r_p in recommend_products %}
                     <div class="item">
                         <a href="{{ r_p.get_absolute_url }}">
