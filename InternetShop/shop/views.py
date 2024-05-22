@@ -17,7 +17,7 @@ def product_list(request, category_slug=None):
         language = request.LANGUAGE_CODE
         category = get_object_or_404(
             Category,
-            translations__language=language,
+            translations__language_code=language,
             translations__slug=category_slug,
         )
         products = products.filter(category=category)
@@ -38,7 +38,7 @@ def product_detail(request, id, slug):
         Product,
         is_available=True,
         id=id,
-        translations__language=language,
+        translations__language_code=language,
         translations__slug=slug,
     )
     cart_form = AddProductToCartForm()
