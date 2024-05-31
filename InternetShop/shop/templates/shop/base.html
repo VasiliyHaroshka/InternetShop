@@ -49,5 +49,34 @@
             {% block content %}
             {% endblock %}
         </div>
+        <div id="footer">
+		<div class="pagination" align="center">
+        {% if page_obj.has_other_pages %}
+        <br>
+            <nav>
+                {% if page_obj.number > 3 %}
+                    <a href="?page=1"><<</a>
+                {% endif %}
+
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">&#9668;</a>
+                {% endif %}
+
+                {% for p in paginator.page_range %}
+                    {% if page_obj.number == p %}
+                        <font size="6" color="red" >{{ p }}</font>
+                    {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                        <a href="?page={{ p }}">{{ p }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">&#9658;</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">>></a>
+                {% endif %}
+            </nav>
+        {% endif %}
+	    </div>
+	</div>
     </body>
 </html>

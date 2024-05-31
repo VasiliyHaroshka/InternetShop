@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 
 from .models import Product, Category
@@ -13,6 +14,7 @@ def product_list(request, category_slug=None):
     categories = Category.objects.all()
     category = None
     products = Product.objects.filter(is_available=True)
+
     if category_slug:
         language = request.LANGUAGE_CODE
         category = get_object_or_404(
@@ -22,10 +24,15 @@ def product_list(request, category_slug=None):
         )
         products = products.filter(category=category)
 
+    paginator = Paginator(products, 3)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     context = {
         "categories": categories,
         "category": category,
-        "products": products,
+        "paginator": paginator,
+        "page_obj": page_obj,
     }
 
     return render(request, "shop/product/product_list.html", context=context)
