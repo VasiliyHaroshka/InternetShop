@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "rosetta",
     "parler",
     "localflavor",
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "myshop.urls"
@@ -190,3 +192,7 @@ PARLER_LANGUAGES = {
         "hide_untranslated": False,
     }
 }
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
