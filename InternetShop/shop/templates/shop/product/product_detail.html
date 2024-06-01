@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="product-detail">
-        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'image/no_image.png' %}{% endif %}">
+        <img style="width:250px; height:350px;" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'image/no_image.png' %}{% endif %}">
         <h1>{{ product.name }}</h1>
         <h2>
             <a href="{{ product.category.get_absolute_url }}">
@@ -15,7 +15,7 @@
         </h2>
         <p class="price">{{ product.price }} $</p>
         <form action="{% url 'cart:cart_add' product.id %}" method="post">
-            {{ cart_form }}
+            {{ cart_form.as_table }}
             {% csrf_token %}
             <input type="submit" value="{% trans 'Add to cart' %}">
         </form>
