@@ -13,7 +13,7 @@ def product_list(request, category_slug=None):
     """
     categories = Category.objects.all()
     category = None
-    products = Product.objects.filter(is_available=True)
+    products = Product.objects.filter(is_available=True).select_related("category")
 
     if category_slug:
         language = request.LANGUAGE_CODE
@@ -22,7 +22,7 @@ def product_list(request, category_slug=None):
             translations__language_code=language,
             translations__slug=category_slug,
         )
-        products = products.filter(category=category)
+        products = products.filter(category=category).select_related("category")
 
     paginator = Paginator(products, 3)
     page_number = request.GET.get("page")
