@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "parler",
     "localflavor",
     "debug_toolbar",
+    "captcha",
 ]
 
 MIDDLEWARE = [
