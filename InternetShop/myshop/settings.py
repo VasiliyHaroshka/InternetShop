@@ -197,3 +197,6 @@ PARLER_LANGUAGES = {
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+CAPTCHA_FONT_SIZE = 130
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
