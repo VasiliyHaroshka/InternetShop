@@ -200,3 +200,12 @@ INTERNAL_IPS = [
 
 CAPTCHA_FONT_SIZE = 130
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
+        "LOCATION": [
+            "127.0.0.1:11211",
+            ]
+    }
+}
