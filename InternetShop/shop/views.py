@@ -1,11 +1,13 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.cache import cache_page
 
 from .models import Product, Category
 from .recommender import Recommender
 from cart.forms import AddProductToCartForm
 
 
+@cache_page(5 * 60)
 def product_list(request, category_slug=None):
     """
     Return products with certain category.
