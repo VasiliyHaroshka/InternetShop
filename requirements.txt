@@ -13,9 +13,12 @@ click-plugins==1.1.1
 click-repl==0.3.0
 cssselect2==0.7.0
 Django==5.0.2
+django-debug-toolbar==4.4.2
 django-localflavor==4.0
 django-parler==2.3
+django-ranged-response==0.2.0
 django-rosetta==0.10.0
+django-simple-captcha==0.6.0
 flower==2.0.1
 fonttools==4.51.0
 html5lib==1.1
