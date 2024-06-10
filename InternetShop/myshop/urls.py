@@ -31,6 +31,7 @@ urlpatterns = i18n_patterns(
     path(_("coupons/"), include("coupons.urls", namespace="coupons")),
     path("rosetta/", include("rosetta.urls")),
     path("captcha/", include("captcha.urls")),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path("", include("shop.urls", namespace="shop")),
 )
 
