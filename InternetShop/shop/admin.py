@@ -18,6 +18,7 @@ class ProductAdmin(TranslatableAdmin):
     fields = ("name", "image", "get_photo", "slug", "price", "category", "is_available")
     readonly_fields = ("get_photo", "created_at", "updated_at")
     save_on_top = True
+    list_editable = ("is_available",)
 
     def get_prepopulated_fields(self, request, obj=None):
         return {"slug": ("name",)}
@@ -36,3 +37,7 @@ class CategoryAdmin(TranslatableAdmin):
 
     def get_prepopulated_fields(self, request, obj=None):
         return {"slug": ("name",)}
+
+
+admin.site.site_title = "Интернет магазин"
+admin.site.site_header = "Интернет магазин"
