@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "localflavor",
     "debug_toolbar",
     "captcha",
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
