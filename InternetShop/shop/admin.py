@@ -13,6 +13,14 @@ class ProductAdminForm(forms.ModelForm):
         widget=CKEditorUploadingWidget(),
         label="Описание",
     )
+    name = forms.CharField(
+        max_length=100,
+        label="Имя",
+    )
+    slug = forms.SlugField(
+        max_length=100,
+        label="Слаг",
+    )
 
     class Meta:
         model = Product
@@ -29,7 +37,7 @@ class ProductAdmin(TranslatableAdmin):
     list_filter = ("is_available", "created_at", "updated_at")
     list_editable = ("price", "is_available")
     form = ProductAdminForm
-    fields = ("name", "image", "get_photo", "slug", "price", "category", "is_available")
+    fields = ("name", "image", "get_photo", "slug", "price", "category", "description", "is_available")
     readonly_fields = ("get_photo", "created_at", "updated_at")
     save_on_top = True
     list_editable = ("is_available",)
@@ -41,7 +49,7 @@ class ProductAdmin(TranslatableAdmin):
         if item.image:
             return mark_safe(f"<img src='{item.image.url}' width=50>")
 
-    get_photo.short_description = "Картинка"
+    get_photo.short_description = "Фото товара"
 
 
 @admin.register(Category)
