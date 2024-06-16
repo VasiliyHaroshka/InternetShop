@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+from django_ckeditor_5.fields import CKEditor5Field
 from parler.models import TranslatableModel, TranslatedFields
 
 
@@ -27,7 +28,7 @@ class Product(TranslatableModel):
     translations = TranslatedFields(
         name=models.CharField(max_length=100),
         slug=models.SlugField(max_length=100, unique=True),
-        description=models.TextField(blank=True),
+        description=CKEditor5Field(blank=True),
     )
 
     image = models.ImageField(

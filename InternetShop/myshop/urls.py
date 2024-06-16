@@ -31,13 +31,16 @@ urlpatterns = i18n_patterns(
     path(_("coupons/"), include("coupons.urls", namespace="coupons")),
     path("rosetta/", include("rosetta.urls")),
     path("captcha/", include("captcha.urls")),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
     path("", include("shop.urls", namespace="shop")),
 )
 
 urlpatterns += [
     path("payment/webhook", stripe_webhook, name="stripe-webhook"),
 ]
+
+urlpatterns += [
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns = [path("__debug__/", include("debug_toolbar.urls"))] + urlpatterns

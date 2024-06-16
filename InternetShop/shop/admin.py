@@ -2,29 +2,25 @@ from django.contrib import admin
 from django.contrib.gis import forms
 from django.utils.safestring import mark_safe
 
+from django_ckeditor_5.widgets import CKEditor5Widget
 from parler.admin import TranslatableAdmin
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from .models import Product, Category
 
 
 class ProductAdminForm(forms.ModelForm):
-    description = forms.CharField(
-        widget=CKEditorUploadingWidget(),
-        label="Описание",
-    )
-    name = forms.CharField(
-        max_length=100,
-        label="Имя",
-    )
-    slug = forms.SlugField(
-        max_length=100,
-        label="Слаг",
-    )
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["description"].required = False
 
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ("price", "category", "is_available")
+        widgets = {
+            "description": CKEditor5Widget(
+                attrs={"class": "django_ckeditor_5"},
+            )
+        }
 
 
 @admin.register(Product)
@@ -36,7 +32,6 @@ class ProductAdmin(TranslatableAdmin):
     search_fields = ('name', 'category__name')
     list_filter = ("is_available", "created_at", "updated_at")
     list_editable = ("price", "is_available")
-    form = ProductAdminForm
     fields = ("name", "image", "get_photo", "slug", "price", "category", "description", "is_available")
     readonly_fields = ("get_photo", "created_at", "updated_at")
     save_on_top = True
