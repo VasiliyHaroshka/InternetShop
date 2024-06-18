@@ -13,7 +13,9 @@ click-plugins==1.1.1
 click-repl==0.3.0
 cssselect2==0.7.0
 Django==5.0.2
+django-ckeditor-5==0.2.13
 django-debug-toolbar==4.4.2
+django-js-asset==2.2.0
 django-localflavor==4.0
 django-parler==2.3
 django-ranged-response==0.2.0
