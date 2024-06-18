@@ -13,7 +13,7 @@ from .tasks import order_created
 
 
 def order_create(request):
-    """Создание заказа и применение к нему скидки если она есть"""
+    """Create an order and applying a discount if it is"""
     cart = Cart(request)
     if request.method == "POST":
         form = OrderForm(request.POST)

@@ -73,6 +73,7 @@ def order_detail(obj: Order):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
+    """Add model Order to admin panel with some settings"""
     list_display = (
         "id", "first_name", "last_name", "email", "address",
         "post_index", "city", "paid", "created_at", "updated_at",

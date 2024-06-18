@@ -76,11 +76,11 @@ class Order(models.Model):
         verbose_name_plural = "Заказы"
 
     def get_total_cost_before_discount(self):
-        """Итоговая стоимость заказа без скидки"""
+        """Total cost of the order without a discount"""
         return sum(item.get_cost() for item in self.items.all())
 
     def get_discount(self):
-        """Применение скидки к заказу"""
+        """Applying a discount to the order"""
         total_cost = self.get_total_cost_before_discount()
         if self.discount:
             return total_cost * (self.discount / Decimal(100))
@@ -92,7 +92,7 @@ class Order(models.Model):
         return total_cost - self.get_discount()
 
     def get_stripe_url(self):
-        """Получение ссылки на каждый id платежа в информационной панели stripe"""
+        """Get link on each payment's id in stripe info panel"""
         if not self.stripe_id:
             return ""
         if "_test_" in settings.STRIPE_SECRET_KEY:

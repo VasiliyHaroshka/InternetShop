@@ -9,6 +9,7 @@ from .models import Product, Category
 
 
 class ProductAdminForm(forms.ModelForm):
+    """Add description field with ckeditor"""
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["description"].required = False
@@ -38,9 +39,11 @@ class ProductAdmin(TranslatableAdmin):
     list_editable = ("is_available",)
 
     def get_prepopulated_fields(self, request, obj=None):
+        """Fill in slug field according name field"""
         return {"slug": ("name",)}
 
     def get_photo(self, item):
+        """Return mini photo for admin panel"""
         if item.image:
             return mark_safe(f"<img src='{item.image.url}' width=50>")
 
