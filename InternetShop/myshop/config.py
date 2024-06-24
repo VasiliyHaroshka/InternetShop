@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
+DJANGO_ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS")
 
 DATA_BASE = os.environ.get("DATA_BASE")
 DATA_BASE_NAME = os.environ.get("DATA_BASE_NAME")

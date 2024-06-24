@@ -13,8 +13,8 @@ import os
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 
-from .config import SECRET_KEY
 from .config import (
+    SECRET_KEY,
     DATA_BASE,
     DATA_BASE_NAME,
     USER_NAME,
@@ -37,9 +37,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
